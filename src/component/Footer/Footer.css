@@ -1,0 +1,35 @@
+.footer-text ul {
+  margin: 0;
+  padding: 0;
+}
+.footer-text ul li {
+  list-style: none;
+  text-align: start;
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  padding: 5px 0;
+}
+.footer-text h4{
+    color: var(--Primary-Primary, #282828);
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 150% */
+letter-spacing: 0.15px;
+text-transform: uppercase;
+}
+ .svg4 svg{
+    fill:#282828;
+}
+.footer-text ul li:hover{
+    color: var(--Secondery-Primary, #7c5702);
+}
+.footer-text li:hover .svg4 svg{
+    fill:#7c5702;
+}

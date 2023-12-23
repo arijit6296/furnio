@@ -1,0 +1,29 @@
+.Collections-title{
+  color: var(--Primary-Primary, #282828);
+text-align: center;
+font-family: Prosto One;
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: 40px;
+}
+.boxes h5{
+  color: var(--Primary-Primary, #282828);
+text-align: center;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 150% */
+letter-spacing: 0.15px;
+text-transform: uppercase;
+margin: 10px 0;
+}
+.boxes img{
+max-width: 100%;
+width: 100vw;
+opacity: 1;
+}
+.boxes:hover img{
+  opacity: 0.7;
+}

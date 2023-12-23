@@ -1,0 +1,54 @@
+.boxes2 {
+  display: flex;
+}
+.icon2{
+  display: flex;
+  align-items: baseline;
+}
+.icon2 svg {
+  width: 20px;
+  margin-right: 20px;
+  fill: #282828;
+}
+.icon2 svg:hover {
+  fill: var(--Secondery-Primary, #7c5702);
+}
+.marge-layer {
+  display: flex;
+  justify-content: space-between;
+}
+.boxes2 p {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+.btn3 {
+  margin: 10px 0px;
+  width: 281px;
+  padding: 18px 24px;
+  color: #fff;
+  background-color: var(--Primary-Primary, #282828);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+  border: 1px solid var(--Primary-Primary, #282828);
+}
+.btn3:hover {
+  border: 1px solid var(--Primary-Primary, #282828);
+  color: var(--Primary-Primary, #282828);
+  background-color: var(--Primary-Primary, #ffffff);
+  font-weight: 500;
+}
+.bg-color-light{
+  background: var(--Background-Variant-1, #F4F4F4);
+  padding: 30px 0;
+}

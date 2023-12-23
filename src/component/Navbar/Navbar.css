@@ -1,0 +1,44 @@
+.nav-link{
+color: var(--Primary-Primary, #282828);
+text-align: center;
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 17px; /* 142.857% */
+letter-spacing: 0.1px;
+text-transform: uppercase;
+padding: 10px 12px !important;
+}
+.nav-link:hover{
+    color: var(--Secondery-Primary, #7c5702);
+}
+.icon{
+    width: 20%;
+}
+.icon svg {
+    width: 20px;
+    margin-right: 20px;
+    fill: #282828;
+}
+.icon svg:hover{
+    fill: var(--Secondery-Primary, #7c5702);
+}
+.count {
+    position: relative;
+    top: -27px;
+    right: -15px;
+    z-index: 2;
+    font-size: 11px;
+    border-radius: 50%;
+    background: #d60b28;
+    width: 16px;
+    height: 16px;
+    line-height:16px;
+    display: block;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
+  

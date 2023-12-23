@@ -1,0 +1,51 @@
+.margin-y {
+  margin-top: 75px;
+}
+.head {
+  color: var(--Primary-Primary, #282828);
+  font-family: Prosto One;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 44px;
+  width: 81%;
+}
+.para {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0.5px;
+  width: 81%;
+  margin: 10px 0;
+}
+.btn1 {
+  width: 263px;
+  padding: 14px 24px;
+  color: #fff;
+  background-color: var(--Primary-Primary, #282828);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+  border: 1px solid var(--Primary-Primary, #282828);  margin: 10px 0;
+}
+.btn1:hover {
+  border: 1px solid var(--Primary-Primary, #282828);
+  color: var(--Primary-Primary, #282828);
+  background: var(--Primary-Primary, #ffffff);
+  font-weight: 500;
+}
+.box-1{
+    margin: 120px 50px 0;
+}
+.image-wapper{
+    width: 90%;
+    margin: auto 10px;
+}

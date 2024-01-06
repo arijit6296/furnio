@@ -11,14 +11,7 @@ import Collections from "./component/Collections/Collections";
 import Certificate from "./component/Certificate/Certificate";
 import Blog from "./component/Blog/Blog";
 import WholeSalers from "./component/WholeSalers/WholeSalers";
-
-
-
-
-
-
-
-
+import Products from "./component/Products/Products";
 
 const router = createBrowserRouter([
   {
@@ -31,11 +24,11 @@ const router = createBrowserRouter([
         <Collections/>
         <Blog/>
         <WholeSalers/></>,
-        children:[]
+        // children:[]
       },
       {
-        path: "/tea collections",
-        element:<><Banner/></>,
+        path: "/tea_collections",
+        element:<> <Products/></>,
       },
       {
         path: "/accessories",

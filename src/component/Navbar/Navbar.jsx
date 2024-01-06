@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link , NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "./images/Frame 3.png";
 import "./Navbar.css";
 import ModalDialog from "../Modal/Modal";
@@ -23,7 +23,7 @@ function NavItem(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
-              <NavLink className='nav-link' to="/tea collections">tea collections</NavLink>
+              <NavLink className='nav-link' to="/tea_collections">tea collections</NavLink>
               <NavLink className='nav-link' to="/accessories">accessories</NavLink>
               <NavLink className='nav-link' to="/blog">blog</NavLink>
               <NavLink className='nav-link' to="/contact us">contact us</NavLink>
@@ -100,7 +100,7 @@ function NavItem(props) {
                     <path d="M5 22c-.55 0-1.021-.196-1.413-.587A1.928 1.928 0 013 20V8c0-.55.196-1.02.587-1.412A1.927 1.927 0 015 6h2c0-1.383.488-2.563 1.463-3.538C9.438 1.487 10.617 1 12 1s2.563.487 3.538 1.462C16.513 3.437 17 4.617 17 6h2c.55 0 1.021.196 1.413.588.391.391.587.862.587 1.412v12c0 .55-.196 1.021-.587 1.413A1.928 1.928 0 0119 22H5zm0-2h14V8H5v12zm7-6c1.383 0 2.563-.488 3.538-1.463C16.513 11.562 17 10.383 17 9h-2c0 .833-.292 1.542-.875 2.125A2.893 2.893 0 0112 12a2.893 2.893 0 01-2.125-.875A2.893 2.893 0 019 9H7c0 1.383.488 2.562 1.463 3.537C9.438 13.512 10.617 14 12 14zM9 6h6c0-.833-.292-1.542-.875-2.125A2.893 2.893 0 0012 3c-.833 0-1.542.292-2.125.875A2.893 2.893 0 009 6z"></path>
                   </g>
                 </svg>
-                <span class="count">1</span>
+                <span className="count">1</span>
               </NavLink>
             </Nav>
           </Navbar.Collapse>

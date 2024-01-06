@@ -41,4 +41,14 @@ padding: 10px 12px !important;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
   }
-  
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    .icon {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+   }
+/* @media screen and (min-width: 480px) and (max-width: 767px) { }
+@media screen and (min-width: 768px) and (max-width: 979px) { }
+@media screen and (min-width: 980px) and (max-width: 1024px) { } */

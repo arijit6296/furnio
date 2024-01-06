@@ -6,7 +6,7 @@ import bannerImg from "./images/Landing Main Image.png";
 function WholeSalers() {
   return (
     <>
-      <Container fluid="xxl margin-y">
+      <Container fluid="xxl margin-y2">
         <Row>
           <Col md ={6} xs={12}>
           <div className="box-2">

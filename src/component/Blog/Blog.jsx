@@ -11,7 +11,7 @@ function Blog() {
         <Container fluid="md">
           <h2 className="blog-title">Last Blog Posts</h2>
           <Row>
-            <Col md={6} xs={12}>
+            <Col md={6} xs={12} className="my-2">
               <Row>
                 <Col md={6}>
                   <div className="blog-image">
@@ -27,7 +27,7 @@ function Blog() {
                 </Col>
               </Row>
             </Col>
-            <Col md={6} xs={12}>
+            <Col md={6} xs={12} className="my-2">
               <Row>
                 <Col md={6}>
                   <div className="blog-image">

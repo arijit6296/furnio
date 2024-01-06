@@ -14,9 +14,9 @@ import img9 from "./images/image1 (1).png";
 function Collections() {
   return (
     <>
-      <Container fluid="md margin-y">
+      <Container fluid="md margin-y1">
         <h4 className="Collections-title">Our Collections</h4>
-        <Row className="margin-y">
+        <Row className="margin-y1">
           <Col md={4} xs={12}>
             <div className="boxes">
               <img src={img1} alt="" />

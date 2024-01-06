@@ -1,0 +1,35 @@
+.singel-head{
+    color: var(--Primary-Primary, #282828);
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0.1px;
+text-transform: uppercase;
+}
+.single-image{
+   width: 400px;
+}
+.single-image img{
+    max-width: 100%;
+    width: 100%;
+}
+.single-title{
+    color: var(--Primary-Primary, #282828);
+font-family: Prosto One;
+font-size: 36px;
+font-style: normal;
+font-weight: 400;
+line-height: 44px;
+width: 65%;
+}
+.single-para{
+    color: var(--Primary-Primary, #282828);
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.5px;
+}

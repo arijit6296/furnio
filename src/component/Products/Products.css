@@ -1,0 +1,169 @@
+.accordion{
+  margin-top: 50px;
+}
+.accordion-collapse {
+  border: 0;
+}
+.accordion-button {
+  padding: 10px 5px;
+  border: 0;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px; /* 150% */
+  letter-spacing: 0.15px;
+}
+.accordion-button:focus {
+  box-shadow: none;
+  border: none;
+}
+.accordion-button:not(.collapsed) {
+  background: none;
+  color: var(--Secondery-Primary, #000000);
+}
+.accordion-body {
+  padding: 15px;
+  background-color: #f6f6f6;
+}
+.accordion-button::after {
+  padding: 10px 5px;
+  width: auto;
+  height: auto;
+  content: "+";
+  font-size: 40px;
+  background-image: none;
+  font-weight: 100;
+  color: #000000;
+  transform: translateY(-4px);
+}
+.accordion-button:not(.collapsed)::after {
+  padding: 10px 5px;
+  width: auto;
+  height: auto;
+  background-image: none;
+  content: "-";
+  font-size: 40px;
+  transform: translate(-5px, -4px);
+  transform: rotate(0deg);
+}
+.accordion-body{
+  display: flex;
+  flex-direction: column;
+}
+.form-check-label{
+  color: var(--Primary-Primary, #282828);
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; 
+letter-spacing: 0.25px;
+}
+.product-img {
+  max-width: 100%;
+  width: 100%;
+}
+.product-para {
+  color: var(--Primary-Primary, #282828);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin: 10px 0 -10px;
+}
+.product-price {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  margin: 20px 0 -10px;
+}
+.product-price span {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+.box-image1 {
+  margin-top: 50px;
+  position: relative;
+}
+.box-image2 {
+  position: relative;
+}
+
+.boxes-hover {
+  background-color: #000000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-image2:hover .boxes-hover {
+  opacity: 0.7;
+}
+.box-image1:hover .boxes-hover {
+  opacity: 0.7;
+}
+
+/* CSS */
+.btn5 {
+  --b: 3px; /* border thickness */
+  --s: 0.45em; /* size of the corner */
+  --color: #f8f8f8;
+
+  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #0000 90deg,
+      var(--color) 0
+    )
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+    calc(100% - var(--b) - 2 * var(--_p));
+  transition: 0.3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: 0.6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn5:hover,
+.btn5:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: 0.05em;
+}
+
+.btn5:active {
+  background: var(--color);
+  color: #fff;
+}

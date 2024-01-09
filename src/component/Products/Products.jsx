@@ -1,106 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Products.css";
 import { Container, Row, Col } from "react-bootstrap";
-import img1 from "./images/img1 (1).png";
-import img2 from "./images/img1 (3).png";
-import img3 from "./images/img1 (8).png";
-import img4 from "./images/img1 (7).png";
-import img5 from "./images/img1 (6).png";
-import img6 from "./images/img1 (5).png";
-import img7 from "./images/img1 (4).png";
-import img8 from "./images/img1 (9).png";
-import img9 from "./images/img1 (2).png";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import Accordion from "react-bootstrap/Accordion";
 import Form from "react-bootstrap/Form";
-import Banner2 from "../Banner_2nd/Banner_2nd"
-
+import Banner2 from "../Banner_2nd/Banner_2nd";
 
 function Products() {
-  
-  const products = [
-    {
-      id: 1,
-      img: img1,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€4.85",
-      quantity: "50 g",
-    },
-    {
-      id: 2,
-      img: img2,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 3,
-      img: img3,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 4,
-      img: img4,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 5,
-      img: img5,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 6,
-      img: img6,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 7,
-      img: img7,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 8,
-      img: img8,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-    {
-      id: 9,
-      img: img9,
-      name: "Ceylon Ginger",
-      description: "Cinnamon chai tea",
-      price: "€5.99",
-      quantity: "75 g",
-    },
-  ];
-  function handleCheckboxChange(id) {
-    const checkbox = document.getElementById(id);
-    console.log(checkbox.name , checkbox.checked);
-  }
-  const [singleProduct, setSingleProduct] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
 
-  function handleViewDetails(product) {
-    console.log(product);
-    setSingleProduct(product);
+  useEffect(() => {
+    fetch("https://boonakitea.cyclic.app/api/teas")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
+  
+
+  const [singleProduct, setSingleProduct] = useState(null);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+
+  function handleCheckboxChange(id, label) {
+    const isChecked = selectedCheckboxes.some(
+      (checkboxObj) => checkboxObj.id === id
+    );
+
+    const updatedCheckboxes = isChecked
+      ? selectedCheckboxes.filter((checkboxObj) => checkboxObj.id !== id)
+      : [...selectedCheckboxes, { id, label, checked: true }];
+
+    setSelectedCheckboxes(updatedCheckboxes);
+    console.log(updatedCheckboxes);
+
+    // Trigger a new API request with the updated checkboxes
+    const queryParams = updatedCheckboxes
+      .map((checkbox) => checkbox.id)
+      .join(",");
+    fetch(`https://boonakitea.cyclic.app//api/teas/${queryParams}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }
+
+  const filteredProducts =
+    selectedCheckboxes.length === 0
+      ? items
+      : items.filter((product) =>
+          selectedCheckboxes.some((checkbox) => checkbox.id === product.id)
+        );
+
+  function handleViewDetails(innerProduct) {
+    console.log(innerProduct);
+    setSingleProduct(innerProduct);
   }
 
   if (singleProduct) {
@@ -108,96 +77,96 @@ function Products() {
   }
   return (
     <>
-    <Banner2/>
-    <Container fluid="xxl">
+      <Banner2 />
+      <Container fluid="xxl">
         <Row>
-    <Col md={2} xs={12}>
+          <Col md={2} xs={12}>
             <Form>
               <Accordion>
                 <Accordion.Item eventKey="0">
                   <Accordion.Header>COLLECTIONA</Accordion.Header>
                   <Accordion.Body>
                     <Form.Check
-                      id="Black teas"
+                      id="Black Tea"
                       inline
-                      label="Black teas"
-                      name="Black teas"
+                      label="Black Tea"
+                      name="Black Tea"
                       type="checkbox"
-                      value={''}
-                      onChange={() => handleCheckboxChange("Black teas")}
+                      value={""}
+                      onChange={() => handleCheckboxChange("black")}
                     />
                     <Form.Check
                       id="Green teas"
-                      inline 
+                      inline
                       label="Green teas"
                       name="Green teas"
                       type="checkbox"
-                      value={''}
-                      onChange={() => handleCheckboxChange("Green teas")}
-                      />
+                      value={""}
+                      onChange={() => handleCheckboxChange("green")}
+                    />
                     <Form.Check
                       id="White teas"
                       inline
                       label="White teas"
                       name="White teas"
                       type="checkbox"
-                      value={''}
-                      onChange={() => handleCheckboxChange("White teas")}
-                      />
+                      value={""}
+                      onChange={() => handleCheckboxChange("white")}
+                    />
                     <Form.Check
-                      id="Chai"
+                      id="Blend"
                       inline
-                      label="Chai"
-                      name="Chai"
+                      label="Blend"
+                      name="Blend"
                       type="checkbox"
-                      value={''}
-                      onChange={() => handleCheckboxChange("Chai")}
-                      />
+                      value={""}
+                      onChange={() => handleCheckboxChange("blend")}
+                    />
                     <Form.Check
                       id="Matcha"
                       inline
                       label="Matcha"
                       name="Matcha"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Matcha")}
-                      />
+                    />
                     <Form.Check
                       id="Herbal teas"
                       inline
                       label="Herbal teas"
                       name="Herbal teas"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Herbal teas")}
-                      />
+                    />
                     <Form.Check
                       id="Oolong"
                       inline
                       label="Oolong"
                       name="Oolong"
                       type="checkbox"
-                      value={''}
-                      onChange={() => handleCheckboxChange("Oolong")}
-                      />
+                      value={""}
+                      onChange={() => handleCheckboxChange("oolong")}
+                    />
                     <Form.Check
                       id="Rooibos"
                       inline
                       label="Rooibos"
                       name="Rooibos"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Rooibos")}
-                      />
+                    />
                     <Form.Check
                       id="Teaware"
                       inline
                       label="Teaware"
                       name="Teaware"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Teaware")}
-                      />
+                    />
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="1">
@@ -209,36 +178,36 @@ function Products() {
                       label="India"
                       name="India"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("India")}
-                      />
+                    />
                     <Form.Check
                       id="Japan"
                       inline
                       label="Japan"
                       name="Japan"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Japan")}
-                      />
+                    />
                     <Form.Check
                       id="Iran"
                       inline
                       label="Iran"
                       name="Iran"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Iran")}
-                      />
+                    />
                     <Form.Check
                       id="South Africa"
                       inline
                       label="South Africa"
                       name="South Africa"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("South Africa")}
-                      />
+                    />
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2">
@@ -250,7 +219,7 @@ function Products() {
                       label="Spicy"
                       name="Spicy"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Spicy")}
                     />
                     <Form.Check
@@ -259,7 +228,7 @@ function Products() {
                       label="Sweet"
                       name="Sweet"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Sweet")}
                     />
                     <Form.Check
@@ -268,7 +237,7 @@ function Products() {
                       label="Citrus"
                       name="Citrus"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Citrus")}
                     />
                     <Form.Check
@@ -277,7 +246,7 @@ function Products() {
                       label="Smooth"
                       name="Smooth"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Smooth")}
                     />
                     <Form.Check
@@ -286,7 +255,7 @@ function Products() {
                       label="Fruity"
                       name="Fruity"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Fruity")}
                     />
                     <Form.Check
@@ -295,7 +264,7 @@ function Products() {
                       label="Floral"
                       name="Floral"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Floral")}
                     />
                     <Form.Check
@@ -304,7 +273,7 @@ function Products() {
                       label="Grassy"
                       name="Grassy"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Grassy")}
                     />
                     <Form.Check
@@ -313,7 +282,7 @@ function Products() {
                       label="Minty"
                       name="Minty"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Minty")}
                     />
                     <Form.Check
@@ -322,7 +291,7 @@ function Products() {
                       label="Bitter"
                       name="Bitter"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Bitter")}
                     />
                     <Form.Check
@@ -331,7 +300,7 @@ function Products() {
                       label="Creamy"
                       name="Creamy"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Creamy")}
                     />
                   </Accordion.Body>
@@ -345,7 +314,7 @@ function Products() {
                       label="Detox"
                       name="Detox"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Detox")}
                     />
                     <Form.Check
@@ -354,7 +323,7 @@ function Products() {
                       label="Energy"
                       name="Energy"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Energy")}
                     />
                     <Form.Check
@@ -363,7 +332,7 @@ function Products() {
                       label="Relax"
                       name="Relax"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Relax")}
                     />
                     <Form.Check
@@ -372,7 +341,7 @@ function Products() {
                       label="Digestion"
                       name="Digestion"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Digestion")}
                     />
                   </Accordion.Body>
@@ -386,7 +355,7 @@ function Products() {
                       label="No Caffeine"
                       name="No Caffeine"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("No Caffeine")}
                     />
                     <Form.Check
@@ -395,7 +364,7 @@ function Products() {
                       label="Low Caffeine"
                       name="Low Caffeine"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Low Caffeine")}
                     />
                     <Form.Check
@@ -404,7 +373,7 @@ function Products() {
                       label="Medium Caffeine"
                       name="Medium Caffeine"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Medium Caffeine")}
                     />
                     <Form.Check
@@ -413,7 +382,7 @@ function Products() {
                       label="High Caffeine"
                       name="High Caffeine"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("High Caffeine")}
                     />
                   </Accordion.Body>
@@ -427,7 +396,7 @@ function Products() {
                       label="Lactose-free"
                       name="Lactose-free"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Lactose-free")}
                     />
                     <Form.Check
@@ -436,7 +405,7 @@ function Products() {
                       label="Gluten-free"
                       name="Gluten-free"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Gluten-free")}
                     />
                     <Form.Check
@@ -445,7 +414,7 @@ function Products() {
                       label="Nuts-free"
                       name="Nuts-free"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Nuts-free")}
                     />
                     <Form.Check
@@ -454,7 +423,7 @@ function Products() {
                       label="Soy-free"
                       name="Soy-free"
                       type="checkbox"
-                      value={''}
+                      value={""}
                       onChange={() => handleCheckboxChange("Soy-free")}
                     />
                   </Accordion.Body>
@@ -467,37 +436,56 @@ function Products() {
                 <Form.Check // prettier-ignore
                   type="switch"
                   id="organic"
-                  onChange={() => handleCheckboxChange("organic")}
+                  onChange={() => handleCheckboxChange("organic", "Organic")}
                 />
               </div>
             </Form>
           </Col>
-      <Col md={10} xs={12}>
-        <Row>
-          {products.map((product) => (
-            <Col md={4} xs={12} key={product.id}>
-              <div className="box-image1">
-                <div className="image-wrappe2">
-                  <img src={product.img} alt="" className="product-img" />
-                </div>
-                <p className="product-para">{product.name}</p>
-                <p className="product-para">{product.description}</p>
-                <h6 className="product-price">{`${product.price} / ${product.quantity}`}</h6>
-                <div className="boxes-hover">
-                  <button
-                    type="button"
-                    className="btn5"
-                    onClick={() => handleViewDetails(product)}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </Col>
-          ))}
+          <Col md={10} xs={12}>
+            <Row>
+              {items.map((product) => (
+                <Col md={12} xs={12} key={product.id}>
+                  <Row>
+                  {product.types &&
+                    Object.entries(product.types).map(
+                      ([typeKey, innerProduct]) => (
+                        <Col md={4} xs={12}>
+                          <div className="box-image1">
+                            <div className="image-wrappe2">
+                              <img
+                                src={
+                                  innerProduct.image
+                                    ? innerProduct.image
+                                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2010_FirstFlush_Yunnan_Baihao_Yinzhen.jpg/640px-2010_FirstFlush_Yunnan_Baihao_Yinzhen.jpg"
+                                }
+                                alt=""
+                                className="product-img"
+                              />
+                            </div>
+                            <p className="product-para">{innerProduct.name}</p>
+                            <p className="product-para">
+                              {innerProduct.decription}
+                            </p>
+                            <h6 className="product-price">{`${innerProduct.caffeine} / ${innerProduct.caffeineLevel}`}</h6>
+                            <div className="boxes-hover">
+                              <button
+                                type="button"
+                                className="btn5"
+                                onClick={() => handleViewDetails(innerProduct)}
+                              >
+                                View Details
+                              </button>
+                            </div>
+                          </div>
+                        </Col>
+                      )
+                    )}
+                    </Row>
+                </Col>
+              ))}
+            </Row>
+          </Col>
         </Row>
-      </Col>
-      </Row>
       </Container>
     </>
   );

@@ -1,35 +1,199 @@
-.singel-head{
+.singel-head {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+}
+
+.single-image img {
+  max-width: 100%;
+  width: 100%;
+  padding: 0 10px;
+}
+.single-title {
+  color: var(--Primary-Primary, #282828);
+  font-family: Prosto One;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 44px;
+  width: 65%;
+}
+.single-para {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+.svg-p svg {
+  width: 20%;
+}
+.single-price {
+  color: var(--Primary-Primary, #282828);
+
+  /* Display/Small */
+  font-family: Prosto One;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 44px; /* 122.222% */
+  margin: 10px 0;
+}
+.variants {
+  color: var(--Primary-Primary, #282828);
+
+  /* Title/Medium */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.15px;
+  margin: 10px 0;
+}
+.svg-stoke svg {
+  width: 84px;
+  height: 102px;
+}
+.svg-stoke svg:hover {
+  cursor: pointer;
+  border: 1px solid #c3b212;
+}
+.button-count {
+  color: #000;
+  text-align: center;
+
+  /* Title/Large */
+  font-family: Montserrat;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 127.273% */
+  margin: 0;
+}
+.btn7 {
+  font-size: 20px;
+  font-weight: bold;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn8 {
+  display: flex;
+  width: 264px;
+  height: 56px;
+  padding: 10px 24px 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #282828;
+  color: #fff;
+  border: 0;
+}
+.button-svg svg {
+  fill: #ffffff;
+}
+
+.btn8:hover {
+  background-color: #fff;
+  color: #282828;
+}
+.btn8:hover .button-svg svg {
+  fill: #282828;
+}
+/* ---------------------------------About---------------------------------------------- */
+
+.about-head {
+  color: var(--Primary-Primary, #282828);
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 87.5% */
+  margin-bottom: 30px;
+}
+.about-para {
+  color: var(--Primary-Primary, #000);
+
+  /* Label/Large */
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.1px;
+}
+.about-svg {
+  display: flex;
+}
+.about-svg svg {
+  width: 5%;
+}
+.line1 {
+    display: flex;
+  width: 1px;
+  height: 56px;
+  background-color: #a0a0a0;
+  padding: 0;
+}
+.quality-tea{
     color: var(--Primary-Primary, #282828);
+
+/* Label/Large */
 font-family: Montserrat;
 font-size: 14px;
 font-style: normal;
 font-weight: 500;
-line-height: 20px;
+line-height: 20px; /* 142.857% */
 letter-spacing: 0.1px;
-text-transform: uppercase;
 }
-.single-image{
-   width: 400px;
-}
-.single-image img{
-    max-width: 100%;
-    width: 100%;
-}
-.single-title{
+.queality-para{
     color: var(--Primary-Primary, #282828);
-font-family: Prosto One;
-font-size: 36px;
+
+/* Body/Medium */
+font-family: Montserrat;
+font-size: 14px;
 font-style: normal;
 font-weight: 400;
-line-height: 44px;
-width: 65%;
+line-height: 20px; /* 142.857% */
+letter-spacing: 0.25px;
 }
-.single-para{
+.ingredient{
     color: var(--Primary-Primary, #282828);
 font-family: Montserrat;
-font-size: 16px;
+font-size: 32px;
 font-style: normal;
 font-weight: 400;
-line-height: 24px;
-letter-spacing: 0.5px;
+line-height: 28px; /* 87.5% */
+margin-top: 30px;
+}
+.line2{
+    display: flex;
+    width: 264px;
+    height: 1px;
+    background-color: #a0a0a0;
+    padding: 0;
+    margin: 10px 9px 20px;
+}
+.ingredient-para{
+    color: var(--Primary-Primary, #282828);
+
+/* Body/Medium */
+font-family: Montserrat;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 142.857% */
+letter-spacing: 0.25px;
+margin-top: 25px;
+width: 90%;
 }
